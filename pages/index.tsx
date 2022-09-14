@@ -9,7 +9,7 @@ import { teamType } from './types/team';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
 import Modal from 'react-modal';
-import CreateModal from '../components/main/createModal';
+import CreateModal from '../components/main/CreateModal';
 import EnterModal from '../components/main/EnterModal';
 
 const Home: NextPage = () => {
