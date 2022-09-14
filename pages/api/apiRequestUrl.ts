@@ -3,7 +3,12 @@ export const BASE_URL = {
 }
 
 export const REQUEST_URL: requestUrlType = {
-  GET_TEAM_LIST: `${BASE_URL.TEAM_MATCH_API}/`
+  GET_TEAM_LIST: `${BASE_URL.TEAM_MATCH_API}/`,
+  GET_TEAM_DETAIL: `${BASE_URL.TEAM_MATCH_API}/team/{uniqueCode}`,
+  ENTER_TEAM: `${BASE_URL.TEAM_MATCH_API}/add-member/{uniqueCode}`,
+  WITHDRAW_TEAM: `${BASE_URL.TEAM_MATCH_API}/del-member/{uniqueCode}`,
+  CREATE_TEAM: `${BASE_URL.TEAM_MATCH_API}/create-team`,
+  DELETE_TEAM: `${BASE_URL.TEAM_MATCH_API}/del-team/{code}`,
 };
 
 export const changeUrlParams = (url: string, paramList: paramListType[]) => {
