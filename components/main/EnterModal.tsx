@@ -17,11 +17,11 @@ export default function EnterModal({onClose}: propsType) {
   const [userPassWord, setUserPassWord] = useState('')
   return (
     <div>
-      <div className='cursor-pointer' onClick={()=>{onClose(); console.log('adwdawdaw')}}>닫기</div>
+      <div className='cursor-pointer' onClick={()=>{onClose()}}>닫기</div>
       <div style={{display: 'flex', justifyContent: 'space-between'}}>
         {positionData.map((item, index)=>{
           return (
-            <div key={index} className='cursor-pointer' style={{color: `${choosePosition === item ? 'red' : '#000'}`, fontWeight: `${choosePosition === item ? 'bold' : '500'}`}} onClick={()=>{setChoosePosition(item), console.log(item)}}>{item}</div>
+            <div key={index} className='cursor-pointer' style={{color: `${choosePosition === item ? 'red' : '#000'}`, fontWeight: `${choosePosition === item ? 'bold' : '500'}`}} onClick={()=>{setChoosePosition(item)}}>{item}</div>
           )
         })}
       </div>
