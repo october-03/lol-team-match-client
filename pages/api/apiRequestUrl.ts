@@ -1,5 +1,5 @@
 export const BASE_URL = {
-  TEAM_MATCH_API: 'https://192.168.100.55:3001'
+  TEAM_MATCH_API: 'http://192.168.100.55:3001'
 }
 
 export const REQUEST_URL: requestUrlType = {
