@@ -8,10 +8,13 @@ import { getTeamList } from './api/teamApi';
 import { teamType } from './types/team';
 import "slick-carousel/slick/slick.css"; 
 import "slick-carousel/slick/slick-theme.css";
+import Modal from 'react-modal';
+import CreateModal from '../components/main/createModal';
 
 const Home: NextPage = () => {
   const [searchName, setSearchName] = useState('')
   const [teamList, setTeamList] = useState<teamType[]>([])
+  const [createModalIsOpen, setCreateModalIsOpen] = useState(false)
 
   const _setTeamList = () => {
     getTeamList()
@@ -38,7 +41,7 @@ const Home: NextPage = () => {
       <input onChange={(e)=>{setSearchName(e.target.value)}}></input>
       <div style={{display: 'flex'}}>
         <div className='cursor-pointer'>팀 참가</div>
-        <div className='cursor-pointer'>팀 생성</div>
+        <div className='cursor-pointer' onClick={()=>{setCreateModalIsOpen(true)}}>팀 생성</div>
       </div>
       <div>
         {teamList.length !== 0 ?
@@ -52,6 +55,9 @@ const Home: NextPage = () => {
           : <div>현재 모집중인 팀이 없습니다.</div>
         }
       </div>
+      <Modal isOpen={createModalIsOpen}>
+        <CreateModal onClose={()=>{setCreateModalIsOpen(false)}}/>
+      </Modal>
     </div>
   )
 }
