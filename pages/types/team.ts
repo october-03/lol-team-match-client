@@ -12,6 +12,7 @@ export type teamType = {
   type: 'solo' | '5x5';
   isFull: boolean;
   __v: number;
+  message?: string;
 }
 
 export type memberType = {
