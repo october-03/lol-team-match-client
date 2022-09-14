@@ -46,6 +46,7 @@ export default function CreateModal({onClose}: propsType) {
         </div>
       </div>
       }
+      <div>생성</div>
     </div>
   )
 }

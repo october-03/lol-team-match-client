@@ -10,11 +10,13 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import Modal from 'react-modal';
 import CreateModal from '../components/main/createModal';
+import EnterModal from '../components/main/EnterModal';
 
 const Home: NextPage = () => {
   const [searchName, setSearchName] = useState('')
   const [teamList, setTeamList] = useState<teamType[]>([])
   const [createModalIsOpen, setCreateModalIsOpen] = useState(false)
+  const [enterModalIsOpen, setEnterModalIsOpen] = useState(false)
 
   const _setTeamList = () => {
     getTeamList()
@@ -40,7 +42,7 @@ const Home: NextPage = () => {
       <div>LOL.GG</div>
       <input onChange={(e)=>{setSearchName(e.target.value)}}></input>
       <div style={{display: 'flex'}}>
-        <div className='cursor-pointer'>팀 참가</div>
+        <div className='cursor-pointer' onClick={()=>{setEnterModalIsOpen(true)}}>팀 참가</div>
         <div className='cursor-pointer' onClick={()=>{setCreateModalIsOpen(true)}}>팀 생성</div>
       </div>
       <div>
@@ -57,6 +59,9 @@ const Home: NextPage = () => {
       </div>
       <Modal isOpen={createModalIsOpen}>
         <CreateModal onClose={()=>{setCreateModalIsOpen(false)}}/>
+      </Modal>
+      <Modal isOpen={enterModalIsOpen}>
+        <EnterModal onClose={()=>{setEnterModalIsOpen(false)}}/>
       </Modal>
     </div>
   )
