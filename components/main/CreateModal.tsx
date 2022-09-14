@@ -1,4 +1,5 @@
 import React from 'react'
+import { createTeam, enterTeam } from '../../pages/api/teamApi'
 const positionData = [
   'top',
   'jg',
@@ -19,10 +20,18 @@ export default function CreateModal({onClose}: propsType) {
   const [teamName, setTeamName] = useState('')
   const [teamCode, setTeamCode] = useState('')
   const [uniqueCode, setUniqueCode] = useState('')
+  const [userName, setUserName] = useState('')
+  const [userPassWord, setUserPassWord] = useState('')
+
   return (
     <div style={{display: 'flex', flexDirection: 'column'}}>
       {uniqueCode ?
-      <div>{`${teamName} 팀의 입장코드는 ${uniqueCode} 입니다`}</div> 
+      <div>
+        <div>{`${teamName} 팀의 입장코드는 ${uniqueCode} 입니다`}</div> 
+        <div onClick={()=>{
+          enterTeam(uniqueCode, userName, choosePosition, userPassWord).then((res)=>{onClose();})
+        }}>완료</div>
+      </div>
       : 
       <div>
         <div className='cursor-pointer' onClick={()=>{onClose(); console.log('adwdawdaw')}}>닫기</div>
@@ -43,10 +52,17 @@ export default function CreateModal({onClose}: propsType) {
         <div>
           <input onChange={(e)=>{setTeamName(e.target.value)}}></input>
           <input onChange={(e)=>{setTeamCode(e.target.value)}}></input>
+          <input onChange={(e)=>{setUserName(e.target.value)}}></input>
+          <input onChange={(e)=>{setUserPassWord(e.target.value)}}></input>
         </div>
+        <div onClick={()=>{
+          createTeam(teamName, teamCode, chooseGame)
+          .then((res)=>{
+            setUniqueCode(res.uniqueCode)
+          })
+        }}>생성</div>
       </div>
       }
-      <div>생성</div>
     </div>
   )
 }
