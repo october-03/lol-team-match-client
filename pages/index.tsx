@@ -1,14 +1,32 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
 import Image from 'next/image'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import Slider from "react-slick";
 import styles from '../styles/Home.module.css'
+import { getTeamList } from './api/teamApi';
 import { teamType } from './types/team';
+import "slick-carousel/slick/slick.css"; 
+import "slick-carousel/slick/slick-theme.css";
 
 const Home: NextPage = () => {
   const [searchName, setSearchName] = useState('')
   const [teamList, setTeamList] = useState<teamType[]>([])
+
+  const _setTeamList = () => {
+    getTeamList()
+    .then((res)=>{
+      setTeamList(res)
+    })
+    .catch((err)=>{
+      console.log(err)
+    })
+  }
+
+  useEffect(()=>{
+    _setTeamList()
+  }, [])
+
   const sliderSettings = {
     dots: false,
     infinite: true,
